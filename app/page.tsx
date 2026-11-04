@@ -7,9 +7,16 @@ export default function Home() {
     <>
       <h1>Products</h1>
       <div className="grid">
-        {products.map((p) => (
+        {products.map((p, i) => (
           <Link key={p.id} href={`/products/${p.id}`} className="card">
-            <Image src={p.image} alt={p.name} width={360} height={270} />
+            <Image
+              src={p.thumb}
+              alt={p.name}
+              width={360}
+              height={270}
+              priority={i < 3}
+              sizes="(max-width: 600px) 100vw, 320px"
+            />
             <h2>{p.name}</h2>
             <p>${p.price}</p>
           </Link>
